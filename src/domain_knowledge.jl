@@ -34,7 +34,7 @@ mutable struct SolvedRolloutEstimator{P<:Policy, RNG<:AbstractRNG}
     depth::Union{Int, Nothing}
 
     function SolvedRolloutEstimator(policy, rng, depth::Union{Int, Nothing}=nothing)
-        new(policy, rng, depth)
+        new{typeof(policy), typeof(rng)}(policy, rng, depth)
     end
 end
 
