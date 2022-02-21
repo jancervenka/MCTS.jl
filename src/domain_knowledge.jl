@@ -55,7 +55,7 @@ estimate_value(estimator::SolvedRolloutEstimator, mdp::MDP, state) = rollout(est
 
 # this rollout function is really just here in case people search for rollout
 function rollout(estimator::SolvedRolloutEstimator, mdp::MDP, s)
-    sim = RolloutSimulator(estimator.rng, estimator.depth)
+    sim = RolloutSimulator(rng=estimator.rng, max_steps=estimator.depth)
     POMDPs.simulate(sim, mdp, estimator.policy, s)
 end
 
